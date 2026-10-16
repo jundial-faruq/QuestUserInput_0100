@@ -3,6 +3,7 @@ package com.example.praktikum5
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ParentDataModifier
 
 @Composable
@@ -17,5 +18,8 @@ fun FromDataDiri(modifier: Modifier){
     var alamat by remember{mutableStateOf(value = "")}
     var jenis by remember{mutableStateOf(value = "")}
     var gender:List<String> = listOf("Laki-laki", "Perempiuan")
+
+
+    )
 
 }
