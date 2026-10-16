@@ -1,49 +1,77 @@
+
 package com.example.praktikum5
 
-import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.selection.selectable
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.layout.ParentDataModifier
+import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.unit.dp
 
 @Composable
-fun FromDataDiri(modifier: Modifier){
-    //variable-variabel untuk mengingat nilai masukan dai keyboard
-    var textNama by remember{mutableStateOf(value = "")}
-    var textAlamat by remember{mutableStateOf(value = "")}
-    var textJK by remember{mutableStateOf(value = "")}
+fun FromDataDiri(modifier: Modifier = Modifier) {
 
-    //variabel-variabel untuk menyimpan data yang diperoleh dari  komponen UI
-    var nama by remember{mutableStateOf(value = "")}
-    var alamat by remember{mutableStateOf(value = "")}
-    var jenis by remember{mutableStateOf(value = "")}
-    var gender:List<String> = listOf("Laki-laki", "Perempiuan")
-    Column(odifier = Modifier.padding(top = 50.dp),
-        verticalArangement = Arrangement.Top,
-        horizontalAlignment = Alignment.Top,
-        OutlineTextField(
+    // Variabel untuk input dari keyboard
+    var textNama by remember { mutableStateOf("") }
+    var textAlamat by remember { mutableStateOf("") }
+    var textJK by remember { mutableStateOf("") }
+
+    // Variabel untuk menyimpan data
+    var nama by remember { mutableStateOf("") }
+    var alamat by remember { mutableStateOf("") }
+    var jenis by remember { mutableStateOf("") }
+
+    val gender: List<String> = listOf("Laki-laki", "Perempuan")
+
+    Column(
+        modifier = modifier.padding(top = 50.dp),
+        verticalArrangement = Arrangement.Top,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        OutlinedTextField(
             value = textNama,
             singleLine = true,
             shape = MaterialTheme.shapes.large,
-            modifier = Modifier.width(250.dp)
-            label = {Text(text = "Nama Lengkap")},
-            onValueChange = {
-                textNama = it
-            }
-
+            modifier = Modifier.width(250.dp),
+            label = { Text(text = "Nama Lengkap") },
+            onValueChange = { textNama = it }
         )
-        Row(){
-            gender.forEach (item ->
-            Row(modifier = Modifier.selectable(
 
-            )))
+        OutlinedTextField(
+            value = textAlamat,
+            singleLine = true,
+            shape = MaterialTheme.shapes.large,
+            modifier = Modifier.width(250.dp),
+            label = { Text(text = "Alamat") },
+            onValueChange = { textAlamat = it }
+        )
+
+        Text(
+            text = "Jenis Kelamin",
+            modifier = Modifier.padding(top = 16.dp)
+        )
+
+        Row {
+            gender.forEach { item ->
+                Row(
+                    modifier = Modifier
+                        .selectable(
+                            selected = textJK == item,
+                            role = Role.RadioButton,
+                            onClick = { textJK = item }
+                        )
+                        .padding(8.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    RadioButton(
+                        selected = textJK == item,
+                        onClick = { textJK = item }
+                    )
+                    Text(text = item)
+                }
+            }
         }
-
-
-    )
-
+    }
 }
