@@ -7,6 +7,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
@@ -111,6 +112,20 @@ fun FromDataDiri(modifier: Modifier = Modifier) {
             thickness = dimensionResource(id = R.dimen.divider_tipis),
             color = androidx.compose.ui.graphics.Color.DarkGray
         )
+        ElevatedCard(
+            elevation = CardDefaults.cardElevation(defaultElevation = 10.dp),
+            colors = CardDefaults.cardColors(containerColor = Color.Black),
+            modifier = Modifier
+                .height(100.dp)
+                .width(300.dp)
+        ) {
+            Column (modifier = Modifier.padding(horizontal = 5.dp, vertical = 15.dp),){
+                Text(text = "Nama : "+nama, color = Color.White)
+                Text(text = "Gender : "+jenis, color = Color.White)
+                Text(text = "Alamat : "+alamat, color = Color.White)
 
+                }
+            }
+        }
     }
-}
+
