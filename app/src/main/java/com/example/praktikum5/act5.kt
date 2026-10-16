@@ -8,8 +8,10 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.DEFAULT_ARGS_KEY
 
 @Composable
 fun FromDataDiri(modifier: Modifier = Modifier) {
@@ -83,11 +85,26 @@ fun FromDataDiri(modifier: Modifier = Modifier) {
         )
         HorizontalDivider(
             modifier = Modifier.padding(
-                bottom =
-                    dimensionResource(id = R.dimen.padding_medium), top = dimensionResource(
-                        id = R.dimen.padding_medium
-                    )
+                bottom = dimensionResource(id = R.dimen.padding_medium),
+                top = dimensionResource(id = R.dimen.padding_medium)
             ),
+            thickness = dimensionResource(id = R.dimen.divider_tipis),
+            color = androidx.compose.ui.graphics.Color.DarkGray
+        )
+
+        Button(
+            modifier = Modifier.fillMaxWidth(),
+            enabled = textAlamat.isNotEmpty(),
+            onClick = {
+                nama = textNama
+                jenis = textJK
+                alamat = textAlamat
+            }
+        ) {
+            Text(stringResource(id = R.string.submit))
+        }
+        HorizontalDivider(
+
         )
 
     }
