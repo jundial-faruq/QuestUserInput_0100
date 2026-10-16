@@ -1,6 +1,7 @@
 package com.example.praktikum5
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -25,7 +26,17 @@ fun FromDataDiri(modifier: Modifier){
         horizontalAlignment = Alignment.Top,
         OutlineTextField(
             value = textNama,
+            singleLine = true,
+            shape = MaterialTheme.shapes.large,
+            modifier = Modifier.width(250.dp)
+            label = {Text(text = "Nama Lengkap")},
+            onValueChange = {
+                textNama = it
+            }
+
         )
+
+
 
 
     )
