@@ -7,6 +7,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.unit.dp
 
@@ -79,6 +80,14 @@ fun FromDataDiri(modifier: Modifier = Modifier) {
             modifier = Modifier.width(250.dp),
             label = { Text(text = "Alamat") },
             onValueChange = { textAlamat = it }
+        )
+        HorizontalDivider(
+            modifier = Modifier.padding(
+                bottom =
+                    dimensionResource(id = R.dimen.padding_medium), top = dimensionResource(
+                        id = R.dimen.padding_medium
+                    )
+            ),
         )
 
     }
