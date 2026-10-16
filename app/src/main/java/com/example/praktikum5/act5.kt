@@ -1,6 +1,7 @@
 package com.example.praktikum5
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.selection.selectable
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
@@ -35,8 +36,12 @@ fun FromDataDiri(modifier: Modifier){
             }
 
         )
+        Row(){
+            gender.forEach (item ->
+            Row(modifier = Modifier.selectable(
 
-
+            )))
+        }
 
 
     )
